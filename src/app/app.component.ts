@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'lista-compra';
+
+  items = [
+    {
+        label: 'Videos', icon: 'pi pi-fw pi-video'
+    }
+  ];
+
 }

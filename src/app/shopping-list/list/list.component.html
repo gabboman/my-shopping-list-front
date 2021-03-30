@@ -1,0 +1,8 @@
+<div class="row">
+    <div class="col-12">
+        <input (keyup.enter)="onEnter()"  style="width: 100%;" type="text" pInputText [(ngModel)]="inputText"/>
+    </div>
+    <div  class="col-12" *ngFor="let item of itemList" [hidden]="!item.name.includes(inputText)" >
+        <input type="checkbox" [checked]="item.active"> {{ item.name}}
+    </div>
+</div>
