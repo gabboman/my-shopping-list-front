@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './shopping-list/list/list.component';
 import { WelcomeComponent } from './shopping-list/welcome/welcome.component';
 import { ListboxModule } from 'primeng/listbox';
-import { FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule } from '@angular/forms';
 import {MegaMenuModule} from 'primeng/megamenu';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -28,9 +29,12 @@ import {CheckboxModule} from 'primeng/checkbox';
     ListboxModule,
     MegaMenuModule,
     InputTextModule,
-    CheckboxModule
+    CheckboxModule,
+    ProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    FormBuilder
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

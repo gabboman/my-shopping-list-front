@@ -1,8 +1,22 @@
-<div class="row">
+<p-progressSpinner *ngIf="loading"></p-progressSpinner>
+
+<div class="row" *ngIf="!loading">
     <div class="col-12">
-        <input (keyup.enter)="onEnter()"  style="width: 100%;" type="text" pInputText [(ngModel)]="inputText"/>
+        <input (keyup.enter)="onEnter()" style="width: 100%;" type="text" pInputText [(ngModel)]="inputText" />
     </div>
-    <div  class="col-12" *ngFor="let item of itemList" [hidden]="!item.name.includes(inputText)" >
-        <input type="checkbox" [checked]="item.active"> {{ item.name}}
+    <div class="col-12">
+        <p-checkbox [(ngModel)]="filter" [binary]="true" label="Market mode"></p-checkbox>
+
     </div>
+    <hr>
+    <form  >
+
+        <div class="col-12" *ngFor="let item of itemList"
+            [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) || (filter && item.active)">
+
+            <p-checkbox [binary]="true" [name]="item.name" (onChange)="onChange($event)" [(ngModel)]="item.active" [label]="item.name"></p-checkbox>
+
+        </div>
+    </form>
+
 </div>
