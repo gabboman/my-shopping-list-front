@@ -26,7 +26,7 @@ export class ListComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.listId = this.activatedRoute.snapshot.params.id;
+    this.listId = parseInt(this.activatedRoute.snapshot.params.id);
     this.itemList = await this.shoppingListService.getList(this.listId);
     // this way we don't get a reference but a copy
     this.oldItemList = JSON.parse(JSON.stringify(this.itemList));
@@ -35,13 +35,18 @@ export class ListComponent implements OnInit {
   }
 
   async onEnter() {
+    this.loading = true;
+
     this.itemList = await this.shoppingListService.addItemToList(this.listId,this.inputText);
     this.oldItemList = JSON.parse(JSON.stringify(this.itemList));
     // should we clean the text once it's added?
     this.inputText = '';
+    this.loading = false;
+
   }
 
   async onChange(ev: any) {
+    this.loading = true;
     let itemToChange: Item = this.itemList[0];
     this.itemList.forEach((item, index) => {
       if(item.active !== this.oldItemList[index].active){
@@ -52,7 +57,7 @@ export class ListComponent implements OnInit {
     this.itemList = await this.shoppingListService.checkItemInList(this.listId, itemToChange);
     this.oldItemList = JSON.parse(JSON.stringify(this.itemList));
 
-    
+    this.loading = false;
   }
 
 }
