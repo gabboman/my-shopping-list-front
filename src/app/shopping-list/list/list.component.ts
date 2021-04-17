@@ -56,7 +56,7 @@ export class ListComponent implements OnInit {
 
     this.itemList = await this.shoppingListService.checkItemInList(this.listId, itemToChange);
     this.oldItemList = JSON.parse(JSON.stringify(this.itemList));
-
+    this.inputText = '';
     this.loading = false;
   }
 
