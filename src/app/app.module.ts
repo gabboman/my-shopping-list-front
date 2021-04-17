@@ -12,6 +12,10 @@ import {MegaMenuModule} from 'primeng/megamenu';
 import {InputTextModule} from 'primeng/inputtext';
 import {CheckboxModule} from 'primeng/checkbox';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { AboutComponent } from './shopping-list/about/about.component';
+import {ButtonModule} from 'primeng/button';
+import {ToastModule} from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -19,7 +23,8 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
   declarations: [
     AppComponent,
     ListComponent,
-    WelcomeComponent
+    WelcomeComponent,
+    AboutComponent
   ],
   imports: [
     BrowserModule,
@@ -30,10 +35,13 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     MegaMenuModule,
     InputTextModule,
     CheckboxModule,
-    ProgressSpinnerModule
+    ProgressSpinnerModule,
+    ButtonModule,
+    ToastModule
   ],
   providers: [
-    FormBuilder
+    FormBuilder,
+    MessageService
   ],
   bootstrap: [AppComponent]
 })

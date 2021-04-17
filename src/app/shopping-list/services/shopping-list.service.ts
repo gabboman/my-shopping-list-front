@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { MessageService } from 'primeng/api';
+import { Auth } from 'src/app/interfaces/auth';
 import { Item } from 'src/app/interfaces/item';
 
 @Injectable({
@@ -7,6 +9,7 @@ import { Item } from 'src/app/interfaces/item';
 export class ShoppingListService {
 
   constructor(
+    private messageService: MessageService
   ) { }
 
   async getList(id: number): Promise<Item[]> {
@@ -22,6 +25,7 @@ export class ShoppingListService {
 
     } else {
       // TODO network thing would go here
+      console.log({'list id requested': id});
       res = [
       ]
     }
@@ -30,6 +34,7 @@ export class ShoppingListService {
   }
 
   async addItemToList(id: number, itemName: string): Promise<Item[]> {
+    let status = true;
     let res: Item[] = await this.getList(id);
     let newName = true;
     res.forEach((elem: Item) => {
@@ -38,32 +43,57 @@ export class ShoppingListService {
       }
     });
     if (newName) {
-      const newItem: Item = { name: itemName, active: false};
+      const newItem: Item = { name: itemName, active: false };
       res.push(newItem);
-      if(id === 0){
+      if (id === 0) {
         localStorage.setItem('datos', JSON.stringify(res));
       } else {
         // TODO network thing goes here
       }
     }
 
+    if(status) {
+      this.messageService.add({severity:'success', summary:'Element added', detail:'Added ' + itemName + ' succesfully'});
 
+    }
     return res;
   }
 
   async checkItemInList(id: number, item: Item): Promise<Item[]> {
+    let status = true;
     let res: Item[] = await this.getList(id);
     res.forEach((element: Item) => {
-      if(element.name.toLowerCase() === item.name.toLowerCase()){
+      if (element.name.toLowerCase() === item.name.toLowerCase()) {
         element.active = item.active;
       }
     });
-    if(id===0){
+    if (id === 0) {
       localStorage.setItem('datos', JSON.stringify(res));
     } else {
       // TODO network
     }
 
+    if(status) {
+      this.messageService.add({severity:'success', summary:'Element updated', detail:'Updated ' + item.name + ' succesfully'});
+
+    }
+
+    return res;
+  }
+
+  // This one looks into the localStorage and returns the avaiable lists
+  async getAvaiableLists(): Promise<Auth[]> {
+    let res: Auth[] = [{
+      id: 0,
+      token: '',
+      name: 'Local'
+    }];
+    if (localStorage.getItem('tokens')) {
+      res= JSON.parse(localStorage.tokens);
+      
+    } else {
+      localStorage.setItem('tokens', JSON.stringify(res))
+    }
     return res;
   }
 }

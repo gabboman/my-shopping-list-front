@@ -9,7 +9,10 @@ export class AppComponent {
 
   items = [
     {
-        label: 'Videos', icon: 'pi pi-fw pi-video'
+        label: 'Home', icon: 'pi pi-fw pi-home', routerLink: '/'
+    },
+    {
+      label: 'About', icon: 'pi pi-fw pi-question-circle', routerLink: '/about'
     }
   ];
 

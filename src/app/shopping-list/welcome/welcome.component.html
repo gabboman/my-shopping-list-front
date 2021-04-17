@@ -1,1 +1,7 @@
-<p>welcome works!</p>
+<h1>Welcome to the shopping list app</h1>
+<p-progressSpinner *ngIf="loading"></p-progressSpinner>
+<div *ngIf="!loading">
+    <p>Avaiable lists:</p>
+    <p-button *ngFor="let item of lists" [label]="item.name" [routerLink]="['/list', item.id]" ></p-button>
+</div>
+<p>Soon we will add the posibility of creating lists that are stored in the cloud and can be shared with other people</p>
