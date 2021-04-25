@@ -96,4 +96,31 @@ export class ShoppingListService {
     }
     return res;
   }
+
+  async deleteItemInList(id: number, name: string): Promise<Item[]> {
+    let status = true;
+    let res: Item[] = await this.getList(id);
+    let elementToDelete: number = -1;
+    res.forEach((element: Item, index: number) => {
+      if (element.name.toLowerCase() === name.toLowerCase()) {
+        elementToDelete = index;
+      }
+    });
+    if(elementToDelete != -1){
+      res.splice(elementToDelete, 1);
+    }
+    
+    if (id === 0) {
+      localStorage.setItem('datos', JSON.stringify(res));
+    } else {
+      // TODO network
+    }
+
+    if(status) {
+      this.messageService.add({severity:'success', summary:'Element deleted', detail:'Deleted ' + name + ' succesfully'});
+
+    }
+
+    return res;
+  }
 }

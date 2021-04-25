@@ -60,4 +60,12 @@ export class ListComponent implements OnInit {
     this.loading = false;
   }
 
+  async onDelete(name : string) {
+    this.loading = true;
+
+    this.itemList = await this.shoppingListService.deleteItemInList(this.listId, name);
+
+    this.loading = false;
+  }
+
 }

@@ -9,13 +9,13 @@
 
     </div>
     <hr>
-    <form  >
+    <form style="width: 100%;" >
 
         <div class="col-12" *ngFor="let item of itemList"
             [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) || (filter && item.active)">
 
             <p-checkbox [binary]="true" [name]="item.name" (onChange)="onChange($event)" [(ngModel)]="item.active" [label]="item.name"></p-checkbox>
-
+            <i class="pi pi-trash delete-icon" (click)="onDelete(item.name)" ></i>
         </div>
     </form>
 
