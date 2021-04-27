@@ -94,7 +94,19 @@ export class ShoppingListService {
     if (id === 0) {
       localStorage.setItem('datos', JSON.stringify(res));
     } else {
-      // TODO network
+      let password = this.getListPassword(id)
+        if(password) {
+          console.log(item);
+          let formData: FormData = new FormData();
+          formData.append('id', id.toString());
+          formData.append('password', password);
+          formData.append('item', item.name);
+          formData.append('active', item.active.toString());
+          let response: any = await this.http.post(environment.url + '/updateElement', formData).toPromise();
+          res= response['data'];
+        } else {
+          res = [];
+        }
     }
 
     if(status) {
