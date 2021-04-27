@@ -8,14 +8,17 @@ import { ListComponent } from './shopping-list/list/list.component';
 import { WelcomeComponent } from './shopping-list/welcome/welcome.component';
 import { ListboxModule } from 'primeng/listbox';
 import { FormBuilder, FormsModule } from '@angular/forms';
-import {MegaMenuModule} from 'primeng/megamenu';
-import {InputTextModule} from 'primeng/inputtext';
-import {CheckboxModule} from 'primeng/checkbox';
-import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { MegaMenuModule } from 'primeng/megamenu';
+import { InputTextModule } from 'primeng/inputtext';
+import { CheckboxModule } from 'primeng/checkbox';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { AboutComponent } from './shopping-list/about/about.component';
-import {ButtonModule} from 'primeng/button';
-import {ToastModule} from 'primeng/toast';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { DialogModule } from 'primeng/dialog';
+import { PasswordModule } from 'primeng/password';
+import { HttpClientModule } from '@angular/common/http';
 
 
 
@@ -29,6 +32,7 @@ import { MessageService } from 'primeng/api';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
     ListboxModule,
@@ -37,7 +41,9 @@ import { MessageService } from 'primeng/api';
     CheckboxModule,
     ProgressSpinnerModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    DialogModule,
+    PasswordModule
   ],
   providers: [
     FormBuilder,

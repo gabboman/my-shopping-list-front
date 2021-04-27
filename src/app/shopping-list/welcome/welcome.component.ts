@@ -10,6 +10,10 @@ import { ShoppingListService } from '../services/shopping-list.service';
 export class WelcomeComponent implements OnInit {
   loading = true;
   lists: Auth[] = [];
+  showModal = false;
+  newListPassword = '';
+  newListName = '';
+  modalLoading = false;
 
   constructor(
     private listService: ShoppingListService
@@ -18,6 +22,22 @@ export class WelcomeComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     this.lists = await this.listService.getAvaiableLists();
     this.loading = false;
+  }
+
+  async displayModal() {
+    this.showModal = true;
+  }
+
+  async createList(){
+    this.modalLoading = true;
+    await this.listService.createList(this.newListPassword, this.newListName);
+    this.lists = await this.listService.getAvaiableLists();
+    this.showModal = false;
+    this.modalLoading = false;
+    this.newListName = '';
+    this.newListPassword = '';
+
+
   }
 
 }

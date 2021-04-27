@@ -1,7 +1,10 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Auth } from 'src/app/interfaces/auth';
 import { Item } from 'src/app/interfaces/item';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +12,9 @@ import { Item } from 'src/app/interfaces/item';
 export class ShoppingListService {
 
   constructor(
-    private messageService: MessageService
+    private messageService: MessageService,
+    private http: HttpClient,
+    private router: Router
   ) { }
 
   async getList(id: number): Promise<Item[]> {
@@ -24,10 +29,16 @@ export class ShoppingListService {
       }
 
     } else {
-      // TODO network thing would go here
-      console.log({'list id requested': id});
-      res = [
-      ]
+      let password = this.getListPassword(id)
+      if(password) {
+        let formData: FormData = new FormData();
+        formData.append('id', id.toString());
+        formData.append('password', password);
+        let response: any = await this.http.post(environment.url + '/getList', formData).toPromise();
+        res= response['data'];
+      } else {
+        res = [];
+      }
     }
 
     return res;
@@ -122,5 +133,35 @@ export class ShoppingListService {
     }
 
     return res;
+  }
+
+  async createList(password: string, name: string): Promise<void> {
+    let data = new FormData();
+    data.append('password', password);
+    data.append('name', name);
+    let response: any = await this.http.post(environment.url + '/createList', data).toPromise();
+    console.log(response);
+    let tokens: Auth[] = JSON.parse(localStorage.tokens);
+    tokens.push({name: name, token: password, id: response.newListId});
+    localStorage.setItem('tokens', JSON.stringify(tokens))
+
+  }
+
+  getListPassword(id: number) {
+
+    let pass;
+    let tokens: Auth[] = JSON.parse(localStorage.tokens);
+    tokens.forEach(elem => {
+      if(elem.id === id) {
+        pass= elem.token
+      }
+    });
+    if(pass) {
+      return pass;
+    } else {
+      this.router.navigate(['/']);
+      return null;
+    }
+
   }
 }
