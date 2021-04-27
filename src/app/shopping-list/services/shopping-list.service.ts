@@ -59,12 +59,25 @@ export class ShoppingListService {
       if (id === 0) {
         localStorage.setItem('datos', JSON.stringify(res));
       } else {
-        // TODO network thing goes here
+        let password = this.getListPassword(id)
+        if(password) {
+          let formData: FormData = new FormData();
+          formData.append('id', id.toString());
+          formData.append('password', password);
+          formData.append('item', itemName)
+          let response: any = await this.http.post(environment.url + '/addElement', formData).toPromise();
+          res= response['data'];
+        } else {
+          res = [];
+        }
       }
     }
 
     if(status) {
       this.messageService.add({severity:'success', summary:'Element added', detail:'Added ' + itemName + ' succesfully'});
+
+    } else {
+      this.messageService.add({severity:'error', summary:'something went wrong', detail:'Could not add ' + itemName + ' to the list'});
 
     }
     return res;
