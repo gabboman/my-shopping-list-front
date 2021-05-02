@@ -1,22 +1,25 @@
 <div class="progress-spinner" *ngIf="loading">
     <p-progressSpinner></p-progressSpinner>
 </div>
-<div class="row" >
+<div class="row">
     <div class="col-12">
-        <input (keyup.enter)="onEnter()" style="width: 100%;" type="text" pInputText [(ngModel)]="inputText" />
+        <form (ngSubmit)="onEnter()">
+            <input name="filter" style="width: 100%;" type="text" pInputText [(ngModel)]="inputText" />
+        </form>
     </div>
     <div class="col-12">
         <p-checkbox [(ngModel)]="filter" [binary]="true" label="Market mode"></p-checkbox>
 
     </div>
     <hr>
-    <form style="width: 100%;" >
+    <form style="width: 100%;">
 
         <div class="col-12" *ngFor="let item of itemList"
             [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) || (filter && item.active)">
 
-            <p-checkbox [binary]="true" [name]="item.name" (onChange)="onChange($event)" [(ngModel)]="item.active" [label]="item.name"></p-checkbox>
-            <i class="pi pi-trash delete-icon" (click)="onDelete(item.name)" ></i>
+            <p-checkbox [binary]="true" [name]="item.name" (onChange)="onChange($event)" [(ngModel)]="item.active"
+                [label]="item.name"></p-checkbox>
+            <i class="pi pi-trash delete-icon" (click)="onDelete(item.name)"></i>
         </div>
     </form>
 
@@ -34,7 +37,7 @@
 
             <div class="col-12">
                 Password <br>
-                <input type="password" class="full-width-input" [(ngModel)]="listPassword" pInputText >
+                <input type="password" class="full-width-input" [(ngModel)]="listPassword" pInputText>
             </div>
             <div class="col-12">
                 <p-button class="full-width-input" (click)="authorize()" label="Log in to list"></p-button>
