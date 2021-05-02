@@ -1,6 +1,7 @@
-<p-progressSpinner *ngIf="loading"></p-progressSpinner>
-
-<div class="row" *ngIf="!loading">
+<div class="progress-spinner" *ngIf="loading">
+    <p-progressSpinner></p-progressSpinner>
+</div>
+<div class="row" >
     <div class="col-12">
         <input (keyup.enter)="onEnter()" style="width: 100%;" type="text" pInputText [(ngModel)]="inputText" />
     </div>
