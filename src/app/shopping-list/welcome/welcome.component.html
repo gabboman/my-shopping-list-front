@@ -16,23 +16,25 @@
 <p-dialog header="Create new list" [(visible)]="showModal" [modal]="true">
     <p-progressSpinner *ngIf="modalLoading"></p-progressSpinner>
     <div class="container">
-        <div class="row" style="min-height: 50vh;" *ngIf="!modalLoading">
-            <div class="col-12">
-                <h2>Choose a password that you can share</h2>
-                <p>After creating the list with a password, share it with the link that you will get</p>
+        <form [formGroup]="createListForm" (ngSubmit)="createList()" >
+            <div class="row" style="min-height: 50vh;" *ngIf="!modalLoading">
+                <div class="col-12">
+                    <h2>Choose a password that you can share</h2>
+                    <p>After creating the list with a password, share it with the link that you will get</p>
+                </div>
+                <div class="col-6">
+                    List name <br>
+                    <input formControlName="name" class="full-width-input" type="text"  pInputText />
+                </div>
+                <div class="col-6">
+                    Password <br>
+                    <input formControlName="password" type="password" class="full-width-input" pInputText>
+                </div>
+                <div class="col-12">
+                    <p-button [disabled]="createListForm.status != 'VALID'" class="full-width-input" (click)="createList()" label="Create"></p-button>
+                </div>
             </div>
-            <div class="col-6">
-                List name <br>
-                <input class="full-width-input" type="text" [(ngModel)]="newListName" pInputText />
-            </div>
-            <div class="col-6">
-                Password <br>
-                <input type="password" class="full-width-input" [(ngModel)]="newListPassword" pInputText >
-            </div>
-            <div class="col-12">
-                <p-button class="full-width-input" (click)="createList()" label="Create"></p-button>
-            </div>
-        </div>
+        </form>
     </div>
 
 </p-dialog>

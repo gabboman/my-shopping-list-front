@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './shopping-list/list/list.component';
 import { WelcomeComponent } from './shopping-list/welcome/welcome.component';
 import { ListboxModule } from 'primeng/listbox';
-import { FormBuilder, FormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -34,6 +34,7 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
     ListboxModule,
     MegaMenuModule,
