@@ -4,7 +4,10 @@
 <div class="row">
     <div class="col-12">
         <form (ngSubmit)="onEnter()">
-            <input name="filter" style="width: 100%;" type="text" pInputText [(ngModel)]="inputText" />
+            <span  style="width: 100%" class="p-input-icon-right">
+                <i (click)="onEnter()" class="pi pi-plus "></i>
+                <input  style="width: 100%" name="filter" type="text" pInputText [(ngModel)]="inputText" pInputText />
+            </span>
         </form>
     </div>
     <div class="col-12">
