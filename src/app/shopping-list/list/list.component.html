@@ -20,3 +20,25 @@
     </form>
 
 </div>
+
+
+<p-dialog [(visible)]="showModal" [modal]="true">
+    <p-progressSpinner *ngIf="modalLoading"></p-progressSpinner>
+    <div class="container">
+        <div class="row" style="min-height: 50vh;" *ngIf="!modalLoading">
+            <div class="col-12">
+                <h2>Please introduce the password for this list</h2>
+                <p>It seems like it's your first time in this list. Please introduce the password for the list.</p>
+            </div>
+
+            <div class="col-12">
+                Password <br>
+                <input type="password" class="full-width-input" [(ngModel)]="listPassword" pInputText >
+            </div>
+            <div class="col-12">
+                <p-button class="full-width-input" (click)="authorize()" label="Log in to list"></p-button>
+            </div>
+        </div>
+    </div>
+
+</p-dialog>

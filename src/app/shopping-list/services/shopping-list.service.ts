@@ -199,4 +199,25 @@ export class ShoppingListService {
     }
 
   }
+
+  async checkListPassword(id: number, password: string): Promise<boolean> {
+    let res = false;
+
+    try {
+      let formData: FormData = new FormData();
+        formData.append('id', id.toString());
+        formData.append('password', password);
+        let response: any = await this.http.post(environment.url + '/authorizeList', formData).toPromise();
+        let listas: Auth[] = await this.getAvaiableLists();
+        listas.push({id: response.id, name: response.name, token: password});
+        localStorage.setItem('tokens', JSON.stringify(listas));
+        res = true;
+    } catch (error) {
+      this.messageService.add({severity:'error', summary:'Incorrect password or non existent list', detail:'Please check that you got the correct link and the password'});
+
+    }
+
+
+    return res;
+  }
 }
