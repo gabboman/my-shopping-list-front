@@ -1,17 +1,23 @@
 <h1>Welcome to the shopping list app</h1>
 <p-progressSpinner *ngIf="loading"></p-progressSpinner>
-<div *ngIf="!loading">
-    <p>Avaiable lists:</p>
-    <div *ngFor="let item of lists">
-        <p-button [label]="item.name" [routerLink]="['/list', item.id]"></p-button>
-        <br>
+<div class="container" *ngIf="!loading">
+    <div style="padding: 1em 0" class="row">
+        <p-button (click)="displayModal()" label="Create new list"></p-button>
     </div>
+    <div class="row">
+        <p>Avaiable lists:</p>
+    </div>
+        <ul>
+            <li *ngFor="let item of lists">
+                <a [routerLink]="['/list', item.id]">{{item.name}}</a>
+                
+            </li>
+        </ul>
 
 </div>
 
 <br>
 
-<p-button (click)="displayModal()" label="Create in the cloud"></p-button>
 
 <p-dialog header="Create new list" [(visible)]="showModal" [modal]="true">
     <p-progressSpinner *ngIf="modalLoading"></p-progressSpinner>

@@ -4,18 +4,18 @@
 <div class="row">
     <div class="col-12">
         <form (ngSubmit)="onEnter()">
-            <span  style="width: 100%" class="p-input-icon-right">
+            <span  style="width: 100%; margin: 1em 0" class="p-input-icon-right">
                 <i (click)="onEnter()" class="pi pi-plus "></i>
                 <input  style="width: 100%" name="filter" type="text" pInputText [(ngModel)]="inputText" pInputText />
             </span>
         </form>
     </div>
     <div class="col-12">
-        <p-checkbox [(ngModel)]="filter" [binary]="true" label="Market mode"></p-checkbox>
+        <p-checkbox [(ngModel)]="filter" [binary]="true" label="Show only unchecked elements"></p-checkbox>
 
     </div>
-    <hr>
-    <form style="width: 100%;">
+
+    <form style="width: 100%; margin-top: 2em">
 
         <div class="col-12" *ngFor="let item of itemList"
             [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) || (filter && item.active)">
