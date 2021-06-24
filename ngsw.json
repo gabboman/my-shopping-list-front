@@ -1,0 +1,93 @@
+{
+  "configVersion": 1,
+  "timestamp": 1624571032316,
+  "index": "/my-shopping-list-front/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/my-shopping-list-front/favicon.ico",
+        "/my-shopping-list-front/index.html",
+        "/my-shopping-list-front/main.1a420686ccb15b86aec0.js",
+        "/my-shopping-list-front/manifest.webmanifest",
+        "/my-shopping-list-front/polyfills.00096ed7d93ed26ee6df.js",
+        "/my-shopping-list-front/runtime.7b63b9fd40098a2e8207.js",
+        "/my-shopping-list-front/styles.4eb400a1d820a78c7ae4.css"
+      ],
+      "patterns": []
+    },
+    {
+      "name": "assets",
+      "installMode": "prefetch",
+      "updateMode": "prefetch",
+      "cacheQueryOptions": {
+        "ignoreVary": true
+      },
+      "urls": [
+        "/my-shopping-list-front/assets/icons/icon-128x128.png",
+        "/my-shopping-list-front/assets/icons/icon-144x144.png",
+        "/my-shopping-list-front/assets/icons/icon-152x152.png",
+        "/my-shopping-list-front/assets/icons/icon-192x192.png",
+        "/my-shopping-list-front/assets/icons/icon-384x384.png",
+        "/my-shopping-list-front/assets/icons/icon-512x512.png",
+        "/my-shopping-list-front/assets/icons/icon-72x72.png",
+        "/my-shopping-list-front/assets/icons/icon-96x96.png",
+        "/my-shopping-list-front/color.6441e63a57ccc5105bad.png",
+        "/my-shopping-list-front/hue.f8505bd4d6f3e3aa435b.png",
+        "/my-shopping-list-front/primeicons.3a0d4a58da62cf7c55bb.ttf",
+        "/my-shopping-list-front/primeicons.c55d94a248721abbd220.svg",
+        "/my-shopping-list-front/primeicons.dfbfef2de4bfb34e9722.eot",
+        "/my-shopping-list-front/primeicons.e61f3495a7ecd3d571a4.woff"
+      ],
+      "patterns": []
+    }
+  ],
+  "dataGroups": [],
+  "hashTable": {
+    "/my-shopping-list-front/assets/icons/icon-128x128.png": "065c60fa1d5e7fddc2bc57801b0d2a3e035821f1",
+    "/my-shopping-list-front/assets/icons/icon-144x144.png": "7ccb3de6ef62def40c757afbd969169b0a16dc6b",
+    "/my-shopping-list-front/assets/icons/icon-152x152.png": "8d3a225d28cdf916dbd3a7a32df0070215b925c8",
+    "/my-shopping-list-front/assets/icons/icon-192x192.png": "a3bd2cfb2b825889e2b09c0d4bb2aa583b975eb1",
+    "/my-shopping-list-front/assets/icons/icon-384x384.png": "6fe7d60a9474884b24126bc448ff4d8ef74b85a2",
+    "/my-shopping-list-front/assets/icons/icon-512x512.png": "0fd9d1109a4043e26ad99627ef13c90d16ad4e97",
+    "/my-shopping-list-front/assets/icons/icon-72x72.png": "e5761ddf3721ea4b768d46138f7b1af2900ffddc",
+    "/my-shopping-list-front/assets/icons/icon-96x96.png": "37a597499f4bc1df098c59b9d2e529849ae7b979",
+    "/my-shopping-list-front/color.6441e63a57ccc5105bad.png": "ff4c4bcb2207891b292f544edb4da9d2df5d45cf",
+    "/my-shopping-list-front/favicon.ico": "0fd9d1109a4043e26ad99627ef13c90d16ad4e97",
+    "/my-shopping-list-front/hue.f8505bd4d6f3e3aa435b.png": "f81ae627637a684614aa726e206c73ce099a01fd",
+    "/my-shopping-list-front/index.html": "9f2d73e825e99158ff8b6ebbc45872b18a3307e2",
+    "/my-shopping-list-front/main.1a420686ccb15b86aec0.js": "34cc457f7b50b462b00ad1d6b0530432c492eebb",
+    "/my-shopping-list-front/manifest.webmanifest": "3d9211f1fc003290547596d9c15897de16a32e0b",
+    "/my-shopping-list-front/polyfills.00096ed7d93ed26ee6df.js": "cfe7b0b53e96bff9ba384b4d497c08475a617d62",
+    "/my-shopping-list-front/primeicons.3a0d4a58da62cf7c55bb.ttf": "13889b5e1915891dd548d6b71c1cccddb469e13d",
+    "/my-shopping-list-front/primeicons.c55d94a248721abbd220.svg": "4a2c5258656a8b900ddeabf5ac62aace724f5a0d",
+    "/my-shopping-list-front/primeicons.dfbfef2de4bfb34e9722.eot": "6441e65a2458d0c813cd2bf6e8648c1f54327bdb",
+    "/my-shopping-list-front/primeicons.e61f3495a7ecd3d571a4.woff": "d65c561bf2d7b6707c3912d8987273a9c715b7f2",
+    "/my-shopping-list-front/runtime.7b63b9fd40098a2e8207.js": "a9aafcf49f49145093fc831efd9b8e2f6c71bb9c",
+    "/my-shopping-list-front/styles.4eb400a1d820a78c7ae4.css": "c5e78bf442af7dd83a522b388f927aa5a627b1c1"
+  },
+  "navigationUrls": [
+    {
+      "positive": true,
+      "regex": "^\\/.*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*\\.[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*$"
+    },
+    {
+      "positive": false,
+      "regex": "^\\/(?:.+\\/)?[^/]*__[^/]*\\/.*$"
+    }
+  ],
+  "navigationRequestStrategy": "performance"
+}
