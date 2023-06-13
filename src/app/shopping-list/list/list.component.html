@@ -11,14 +11,19 @@
         </form>
     </div>
     <div class="col-12">
-        <p-checkbox [(ngModel)]="filter" [binary]="true" label="Show only unchecked elements"></p-checkbox>
+      <p-radioButton name="pizza" [value]="0" [(ngModel)]="filter" label="No filter"></p-radioButton>
+      <p-radioButton name="pizza" [value]="1" [(ngModel)]="filter" label="Checked"></p-radioButton>
+      <p-radioButton name="pizza" [value]="2" [(ngModel)]="filter" label="Unchecked"></p-radioButton>
+
 
     </div>
 
     <form style="width: 100%; margin-top: 2em">
 
         <div class="col-12" *ngFor="let item of itemList"
-            [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) || (filter && item.active)">
+            [hidden]="!item.name.toLowerCase().includes(inputText.toLowerCase()) ||
+            (filter === 2 && item.active) ||
+            (filter === 1 && !item.active)">
 
             <p-checkbox [binary]="true" [name]="item.name" (onChange)="onChange($event)" [(ngModel)]="item.active"
                 [label]="item.name"></p-checkbox>

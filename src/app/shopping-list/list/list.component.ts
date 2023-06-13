@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Auth } from 'src/app/interfaces/auth';
 import { Item } from 'src/app/interfaces/item';
@@ -16,7 +16,7 @@ export class ListComponent implements OnInit {
   showModal = false;
   modalLoading = true;
   listPassword = "";
-  filter = false;
+  filter = 0;
   itemList: Item[] = [];
   oldItemList: Item[] = [];
   inputText: string = "";
@@ -25,7 +25,7 @@ export class ListComponent implements OnInit {
 
   constructor(
     private shoppingListService: ShoppingListService,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private activatedRoute: ActivatedRoute,
   ) { }
 
@@ -68,6 +68,7 @@ export class ListComponent implements OnInit {
   }
 
   async onChange(ev: any) {
+    console.log(this.filter)
     this.loading = true;
     let itemToChange: Item = this.itemList[0];
     this.itemList.forEach((item, index) => {

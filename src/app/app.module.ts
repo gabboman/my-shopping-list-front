@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { ListComponent } from './shopping-list/list/list.component';
 import { WelcomeComponent } from './shopping-list/welcome/welcome.component';
 import { ListboxModule } from 'primeng/listbox';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UntypedFormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { InputTextModule } from 'primeng/inputtext';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -19,9 +19,8 @@ import { MessageService } from 'primeng/api';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { HttpClientModule } from '@angular/common/http';
-import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import { RadioButtonModule } from 'primeng/radiobutton';
 
 
 @NgModule({
@@ -43,19 +42,14 @@ import { environment } from '../environments/environment';
     InputTextModule,
     CheckboxModule,
     ProgressSpinnerModule,
+    RadioButtonModule,
     ButtonModule,
     ToastModule,
     DialogModule,
     PasswordModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
-      enabled: environment.production,
-      // Register the ServiceWorker as soon as the app is stable
-      // or after 30 seconds (whichever comes first).
-      registrationStrategy: 'registerWhenStable:30000'
-    })
   ],
   providers: [
-    FormBuilder,
+    UntypedFormBuilder,
     MessageService
   ],
   bootstrap: [AppComponent]

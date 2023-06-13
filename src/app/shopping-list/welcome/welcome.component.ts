@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormControl, UntypedFormGroup, Validators } from '@angular/forms';
 import { Auth } from 'src/app/interfaces/auth';
 import { ShoppingListService } from '../services/shopping-list.service';
 
@@ -13,14 +13,14 @@ export class WelcomeComponent implements OnInit {
   lists: Auth[] = [];
   showModal = false;
   modalLoading = false;
-  createListForm: FormGroup;
+  createListForm: UntypedFormGroup;
   constructor(
     private listService: ShoppingListService,
-    private fb: FormBuilder
+    private fb: UntypedFormBuilder
   ) { 
     this.createListForm = this.fb.group({
-      name: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      name: new UntypedFormControl('', Validators.required),
+      password: new UntypedFormControl('', Validators.required),
     });
   }
 
